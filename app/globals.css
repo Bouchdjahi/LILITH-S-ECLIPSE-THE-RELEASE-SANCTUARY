@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   LILITH'S ECLIPSE — GLOBAL STYLES
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Cinzel:wght@400;500;600&family=Inter:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500&display=swap');
+
+:root {
+  --obsidian: #050508;
+  --midnight-navy: #0a0f1c;
+  --cosmic-blue: #0d1b3e;
+  --luminous-blue: #2a5a9c;
+  --soft-blue: #4a8bc2;
+  --silver: #a0b4c8;
+  --white: #e8eef5;
+  --glass-bg: rgba(13, 27, 62, 0.4);
+  --glass-border: rgba(74, 139, 194, 0.2);
+  --gold: #d4af37;
+  --ember: #6db8ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  background-color: var(--obsidian);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Global background fallback */
+body {
+  background: radial-gradient(
+    ellipse at 50% 30%,
+    var(--cosmic-blue) 0%,
+    var(--midnight-navy) 45%,
+    var(--obsidian) 100%
+  );
+}
+
+/* ---------- Headings use Marcellus ---------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Marcellus', serif;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}
+
+/* ---------- Arabic Typography ---------- */
+[dir='rtl'] h1,
+[dir='rtl'] h2,
+[dir='rtl'] h3,
+[dir='rtl'] h4 {
+  font-family: 'Amiri', serif;
+  letter-spacing: 0;
+}
+
+[dir='rtl'] {
+  font-family: 'Tajawal', 'Inter', sans-serif;
+}
+
+[dir='rtl'] textarea,
+[dir='rtl'] input {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* ---------- Reusable glass card ---------- */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ---------- Primary button ---------- */
+.btn-primary {
+  display: inline-block;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  border: 1px solid var(--luminous-blue);
+  background: rgba(42, 90, 156, 0.2);
+  color: var(--white);
+  font-family: 'Marcellus', serif;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(42, 90, 156, 0.2);
+}
+
+.btn-primary:hover {
+  background: rgba(42, 90, 156, 0.4);
+  box-shadow: 0 0 40px rgba(42, 90, 156, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ---------- Secondary button ---------- */
+.btn-secondary {
+  display: inline-block;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  border: 1px solid rgba(160, 180, 200, 0.3);
+  background: transparent;
+  color: var(--silver);
+  font-family: 'Marcellus', serif;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  border-color: var(--soft-blue);
+  color: var(--white);
+  background: rgba(74, 139, 194, 0.05);
+}
+
+/* Arabic buttons */
+[dir='rtl'] .btn-primary,
+[dir='rtl'] .btn-secondary {
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.9rem;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(74, 139, 194, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 139, 194, 0.5);
+}
+
+/* ---------- Fade-in animation ---------- */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.6s ease forwards;
+}
