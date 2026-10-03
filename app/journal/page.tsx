@@ -40,138 +40,125 @@ interface Theme {
   fontHandAr: string;
 }
 
+interface Star {
+  left: string;
+  top: string;
+  size: string;
+  delay: string;
+  duration: string;
+  opacity: number;
+}
+
+interface Mote {
+  left: string;
+  delay: string;
+  duration: string;
+  size: string;
+  opacity: number;
+}
+
+interface FloatingPage {
+  left: string;
+  top: string;
+  delay: string;
+  duration: string;
+  rotation: number;
+  opacity: number;
+  size: number;
+}
+
+interface Quill {
+  top: string;
+  delay: string;
+  duration: string;
+  opacity: number;
+  scale: number;
+}
+
 /* =========================================================
-   THEMES — NO GOLD / NO YELLOW / NO WARM
+   THEMES
    ========================================================= */
 
 const THEMES: Record<string, Theme> = {
   midnight: {
-    nameEn: 'Midnight',
-    nameAr: 'منتصف الليل',
-    motif: '☾',
+    nameEn: 'Midnight', nameAr: 'منتصف الليل', motif: '☾',
     coverBg: 'linear-gradient(140deg, #1a2540 0%, #060a15 100%)',
-    coverInk: '#d8e2ef',
-    coverAccent: '#a8c4e0',
+    coverInk: '#d8e2ef', coverAccent: '#a8c4e0',
     pageBg: 'linear-gradient(180deg, #f0f4fa 0%, #dde5f0 100%)',
-    pageInk: '#1e2938',
-    pageAccent: '#4a7099',
+    pageInk: '#1e2938', pageAccent: '#4a7099',
     pageLine: 'rgba(120, 140, 170, 0.18)',
-    font: "'Cormorant Garamond', serif",
-    fontAr: "'Tajawal', sans-serif",
-    fontHand: "'Caveat', cursive",
-    fontHandAr: "'Amiri', serif",
+    font: "'Cormorant Garamond', serif", fontAr: "'Tajawal', sans-serif",
+    fontHand: "'Caveat', cursive", fontHandAr: "'Amiri', serif",
   },
   celestial: {
-    nameEn: 'Celestial',
-    nameAr: 'سماوي',
-    motif: '✧',
+    nameEn: 'Celestial', nameAr: 'سماوي', motif: '✧',
     coverBg: 'linear-gradient(140deg, #101a3a 0%, #050814 100%)',
-    coverInk: '#e0eaf8',
-    coverAccent: '#b8cdf0',
+    coverInk: '#e0eaf8', coverAccent: '#b8cdf0',
     pageBg: 'linear-gradient(180deg, #f2f6fc 0%, #dde6f5 100%)',
-    pageInk: '#1c2540',
-    pageAccent: '#5a7ab8',
+    pageInk: '#1c2540', pageAccent: '#5a7ab8',
     pageLine: 'rgba(120, 140, 200, 0.18)',
-    font: "'Cormorant Garamond', serif",
-    fontAr: "'Tajawal', sans-serif",
-    fontHand: "'Dancing Script', cursive",
-    fontHandAr: "'Amiri', serif",
+    font: "'Cormorant Garamond', serif", fontAr: "'Tajawal', sans-serif",
+    fontHand: "'Dancing Script', cursive", fontHandAr: "'Amiri', serif",
   },
   gothic: {
-    nameEn: 'Gothic',
-    nameAr: 'قوطي',
-    motif: '✥',
-    coverBg: 'linear-gradient(140deg, #0a0a0e 0%, #141822 100%)',
-    coverInk: '#d0d5de',
-    coverAccent: '#8a9bb0',
+    nameEn: 'Gothic', nameAr: 'قوطي', motif: '✥',
+    coverBg: 'linear-gradient(140deg, #0a0a0e 0%, #1f1018 100%)',
+    coverInk: '#d0d5de', coverAccent: '#8a9bb0',
     pageBg: 'linear-gradient(180deg, #1a1a20 0%, #0d0d12 100%)',
-    pageInk: '#d0d0d8',
-    pageAccent: '#9aabbf',
+    pageInk: '#d0d0d8', pageAccent: '#9aabbf',
     pageLine: 'rgba(150, 160, 180, 0.14)',
-    font: "'Cormorant Garamond', serif",
-    fontAr: "'Tajawal', sans-serif",
-    fontHand: "'Caveat', cursive",
-    fontHandAr: "'Amiri', serif",
+    font: "'Cormorant Garamond', serif", fontAr: "'Tajawal', sans-serif",
+    fontHand: "'Caveat', cursive", fontHandAr: "'Amiri', serif",
   },
   dream: {
-    nameEn: 'Dream',
-    nameAr: 'حلم',
-    motif: '☁',
+    nameEn: 'Dream', nameAr: 'حلم', motif: '☁',
     coverBg: 'linear-gradient(140deg, #253256 0%, #0d1730 100%)',
-    coverInk: '#e8eefb',
-    coverAccent: '#a8c0e8',
+    coverInk: '#e8eefb', coverAccent: '#a8c0e8',
     pageBg: 'linear-gradient(180deg, #ecf1fb 0%, #d5ddf2 100%)',
-    pageInk: '#252a4a',
-    pageAccent: '#7a8ac9',
+    pageInk: '#252a4a', pageAccent: '#7a8ac9',
     pageLine: 'rgba(140, 150, 200, 0.18)',
-    font: "'Cormorant Garamond', serif",
-    fontAr: "'Tajawal', sans-serif",
-    fontHand: "'Dancing Script', cursive",
-    fontHandAr: "'Amiri', serif",
+    font: "'Cormorant Garamond', serif", fontAr: "'Tajawal', sans-serif",
+    fontHand: "'Dancing Script', cursive", fontHandAr: "'Amiri', serif",
   },
   ocean: {
-    nameEn: 'Ocean',
-    nameAr: 'محيط',
-    motif: '⌘',
+    nameEn: 'Ocean', nameAr: 'محيط', motif: '⌘',
     coverBg: 'linear-gradient(140deg, #0e3054 0%, #061220 100%)',
-    coverInk: '#cfe0ef',
-    coverAccent: '#6fbfd9',
+    coverInk: '#cfe0ef', coverAccent: '#6fbfd9',
     pageBg: 'linear-gradient(180deg, #e8f1f5 0%, #c8dae0 100%)',
-    pageInk: '#123040',
-    pageAccent: '#2a6a8a',
+    pageInk: '#123040', pageAccent: '#2a6a8a',
     pageLine: 'rgba(80, 140, 170, 0.18)',
-    font: "'Cormorant Garamond', serif",
-    fontAr: "'Tajawal', sans-serif",
-    fontHand: "'Caveat', cursive",
-    fontHandAr: "'Amiri', serif",
+    font: "'Cormorant Garamond', serif", fontAr: "'Tajawal', sans-serif",
+    fontHand: "'Caveat', cursive", fontHandAr: "'Amiri', serif",
   },
   minimal: {
-    nameEn: 'Minimal',
-    nameAr: 'بسيط',
-    motif: '·',
+    nameEn: 'Minimal', nameAr: 'بسيط', motif: '·',
     coverBg: 'linear-gradient(140deg, #f0ece4 0%, #d8d2c4 100%)',
-    coverInk: '#2a2620',
-    coverAccent: '#8a8070',
+    coverInk: '#2a2620', coverAccent: '#8a8070',
     pageBg: 'linear-gradient(180deg, #fbf7ef 0%, #f0ebe0 100%)',
-    pageInk: '#1a1a1f',
-    pageAccent: '#4a4a55',
+    pageInk: '#1a1a1f', pageAccent: '#4a4a55',
     pageLine: 'rgba(120, 110, 90, 0.14)',
-    font: "'Cormorant Garamond', serif",
-    fontAr: "'Tajawal', sans-serif",
-    fontHand: "'Caveat', cursive",
-    fontHandAr: "'Amiri', serif",
+    font: "'Cormorant Garamond', serif", fontAr: "'Tajawal', sans-serif",
+    fontHand: "'Caveat', cursive", fontHandAr: "'Amiri', serif",
   },
   witching: {
-    nameEn: 'Witching Hour',
-    nameAr: 'ساعة السحر',
-    motif: '✩',
+    nameEn: 'Witching Hour', nameAr: 'ساعة السحر', motif: '✩',
     coverBg: 'linear-gradient(140deg, #191424 0%, #050308 100%)',
-    coverInk: '#dcd4ec',
-    coverAccent: '#b0a0d0',
-    pageBg: 'linear-gradient(180deg, #ecdfd8 0%, #c8bece 100%)',
-    pageInk: '#2a2038',
-    pageAccent: '#6a5580',
-    pageLine: 'rgba(120, 100, 140, 0.2)',
-    font: "'Cormorant Garamond', serif",
-    fontAr: "'Tajawal', sans-serif",
-    fontHand: "'Dancing Script', cursive",
-    fontHandAr: "'Amiri', serif",
+    coverInk: '#dcd4ec', coverAccent: '#b0a0d0',
+    pageBg: 'linear-gradient(180deg, #f0e8dc 0%, #d8ceb8 100%)',
+    pageInk: '#2a2018', pageAccent: '#6a5540',
+    pageLine: 'rgba(140, 110, 70, 0.2)',
+    font: "'Cormorant Garamond', serif", fontAr: "'Tajawal', sans-serif",
+    fontHand: "'Dancing Script', cursive", fontHandAr: "'Amiri', serif",
   },
   vintage: {
-    nameEn: 'Vintage',
-    nameAr: 'عتيق',
-    motif: '❦',
-    coverBg: 'linear-gradient(140deg, #3a2842 0%, #16101c 100%)',
-    coverInk: '#e0d8e8',
-    coverAccent: '#b8a8c8',
-    pageBg: 'linear-gradient(180deg, #f0e8f0 0%, #d8c8dc 100%)',
-    pageInk: '#2a1830',
-    pageAccent: '#6a4a80',
-    pageLine: 'rgba(120, 90, 140, 0.2)',
-    font: "'Cormorant Garamond', serif",
-    fontAr: "'Tajawal', sans-serif",
-    fontHand: "'Special Elite', 'Courier New', monospace",
-    fontHandAr: "'Amiri', serif",
+    nameEn: 'Vintage', nameAr: 'عتيق', motif: '❦',
+    coverBg: 'linear-gradient(140deg, #5a3528 0%, #241210 100%)',
+    coverInk: '#f0e0c0', coverAccent: '#d4b888',
+    pageBg: 'linear-gradient(180deg, #f5ead0 0%, #e0d0a8 100%)',
+    pageInk: '#3a2818', pageAccent: '#8a5a30',
+    pageLine: 'rgba(160, 120, 70, 0.2)',
+    font: "'Cormorant Garamond', serif", fontAr: "'Tajawal', sans-serif",
+    fontHand: "'Special Elite', 'Courier New', monospace", fontHandAr: "'Amiri', serif",
   },
 };
 
@@ -185,6 +172,56 @@ const MOODS = [
 ];
 
 const STORAGE_KEY = 'lilith_journals_v1';
+
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+const GLOBAL_KEYFRAMES = `
+  @keyframes lTwinkle {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.35); }
+  }
+  @keyframes lDrift {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-120vh) translateX(30px); opacity: 0; }
+  }
+  @keyframes bookFloat {
+    0%, 100% { transform: translateY(0) rotateY(-6deg); }
+    50% { transform: translateY(-10px) rotateY(-6deg); }
+  }
+  @keyframes pageDrift {
+    0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+    20%  { opacity: 0.1; }
+    50%  { transform: translate(30px, -40px) rotate(8deg); }
+    80%  { opacity: 0.1; }
+    100% { transform: translate(-20px, -100px) rotate(-5deg); opacity: 0; }
+  }
+  @keyframes quillDrift {
+    0%   { transform: translateX(0) translateY(0) rotate(-15deg); opacity: 0; }
+    10%  { opacity: 0.12; }
+    50%  { transform: translateX(60vw) translateY(-30px) rotate(-5deg); }
+    90%  { opacity: 0.12; }
+    100% { transform: translateX(120vw) translateY(-60px) rotate(5deg); opacity: 0; }
+  }
+  @keyframes moonBreathe {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.05); opacity: 1; }
+  }
+  @keyframes eclipseBreath {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.85; }
+    50% { transform: translate(-50%, -50%) scale(1.12); opacity: 1; }
+  }
+`;
+
+/* =========================================================
+   HELPERS — Cast helpers so TypeScript never complains
+   ========================================================= */
+
+const asNum = (v: string | number): number =>
+  typeof v === 'number' ? v : parseFloat(v) || 0;
 
 /* =========================================================
    MAIN COMPONENT
@@ -210,49 +247,13 @@ export default function JournalPage() {
   const [toastVisible, setToastVisible] = useState(false);
   const [dateString, setDateString] = useState('');
 
-  const [inkDrops, setInkDrops] = useState<
-    Array<{
-      left: string;
-      top: string;
-      delay: string;
-      duration: string;
-      size: string;
-    }>
-  >([]);
-  const [stars, setStars] = useState<
-    Array<{
-      left: string;
-      top: string;
-      delay: string;
-      duration: string;
-      size: string;
-      opacity: number;
-    }>
-  >([]);
-  const [pages, setPages] = useState<
-    Array<{
-      left: string;
-      top: string;
-      delay: string;
-      duration: string;
-      rotation: string;
-      opacity: number;
-      size: string;
-    }>
-  >([]);
-  const [quills, setQuills] = useState<
-    Array<{
-      top: string;
-      delay: string;
-      duration: string;
-      opacity: number;
-      scale: number;
-    }>
-  >([]);
+  const [inkDrops, setInkDrops] = useState<Mote[]>([]);
+  const [stars, setStars] = useState<Star[]>([]);
+  const [pages, setPages] = useState<FloatingPage[]>([]);
+  const [quills, setQuills] = useState<Quill[]>([]);
 
-  const autosaveTimer = useRef<NodeJS.Timeout | null>(null);
+  const autosaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  /* Load journals */
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -260,14 +261,12 @@ export default function JournalPage() {
     } catch {}
   }, []);
 
-  /* Persist journals */
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(journals));
     } catch {}
   }, [journals]);
 
-  /* Refresh the date */
   useEffect(() => {
     setDateString(
       new Date()
@@ -280,22 +279,23 @@ export default function JournalPage() {
     );
   }, [lang]);
 
-  /* Generate the ambient items once */
   useEffect(() => {
-    const inkArr = [];
-    for (let i = 0; i < 40; i++) {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
+    const inkArr: Mote[] = [];
+    for (let i = 0; i < (isMobile ? 20 : 40); i++) {
       inkArr.push({
         left: Math.random() * 100 + '%',
-        top: Math.random() * 100 + '%',
         delay: `-${Math.random() * 30}s`,
         duration: `${25 + Math.random() * 35}s`,
         size: `${1.5 + Math.random() * 2.5}px`,
+        opacity: 0.3 + Math.random() * 0.5,
       });
     }
     setInkDrops(inkArr);
 
-    const starArr = [];
-    for (let i = 0; i < 90; i++) {
+    const starArr: Star[] = [];
+    for (let i = 0; i < (isMobile ? 40 : 90); i++) {
       starArr.push({
         left: Math.random() * 100 + '%',
         top: Math.random() * 100 + '%',
@@ -307,22 +307,22 @@ export default function JournalPage() {
     }
     setStars(starArr);
 
-    const pageArr = [];
-    for (let i = 0; i < 6; i++) {
+    const pageArr: FloatingPage[] = [];
+    for (let i = 0; i < (isMobile ? 3 : 6); i++) {
       pageArr.push({
         left: `${5 + Math.random() * 90}%`,
         top: `${5 + Math.random() * 85}%`,
         delay: `-${Math.random() * 60}s`,
         duration: `${60 + Math.random() * 60}s`,
-        rotation: `${-15 + Math.random() * 30}deg`,
+        rotation: -15 + Math.random() * 30,
         opacity: 0.04 + Math.random() * 0.06,
-        size: `${60 + Math.random() * 80}px`,
+        size: 60 + Math.random() * 80,
       });
     }
     setPages(pageArr);
 
-    const quillArr = [];
-    for (let i = 0; i < 2; i++) {
+    const quillArr: Quill[] = [];
+    for (let i = 0; i < (isMobile ? 1 : 2); i++) {
       quillArr.push({
         top: `${20 + Math.random() * 60}%`,
         delay: `-${Math.random() * 60}s`,
@@ -343,7 +343,6 @@ export default function JournalPage() {
   const currentTheme = THEMES[currentThemeKey] || THEMES.midnight;
   const activeJournal = journals.find((j) => j.id === activeJournalId);
 
-  /* ---------- SHELF ACTIONS ---------- */
   const openCreateModal = () => {
     setSelectedThemeId('midnight');
     setNewNotebookName('');
@@ -396,14 +395,10 @@ export default function JournalPage() {
     showToast(isAr ? 'تم حذف الدفتر' : 'Notebook deleted');
   };
 
-  /* ---------- ENTRY ACTIONS ---------- */
   const makeTitle = (text: string) => {
     const untitled = isAr ? 'بدون عنوان' : 'Untitled';
     if (!text) return untitled;
-    const first = text
-      .trim()
-      .split(/\n|\.|!|\?|؟/)[0]
-      .trim();
+    const first = text.trim().split(/\n|\.|!|\?|؟/)[0].trim();
     return first.length > 40 ? first.slice(0, 40) + '…' : first || untitled;
   };
 
@@ -461,7 +456,6 @@ export default function JournalPage() {
     showToast(isAr ? 'صفحة جديدة' : 'New page');
   };
 
-  /* ---------- HELPERS ---------- */
   const shortDate = (iso: string) =>
     new Date(iso).toLocaleDateString(isAr ? 'ar-EG' : 'en-US', {
       month: 'short',
@@ -483,15 +477,10 @@ export default function JournalPage() {
     ? currentTheme.fontHand
     : currentTheme.font;
 
-  /* =========================================================
-     RENDER
-     ========================================================= */
-
   return (
-    <div
-      style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}
-    >
-      {/* ========== BACKGROUND GRADIENT ========== */}
+    <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+      <style dangerouslySetInnerHTML={{ __html: GLOBAL_KEYFRAMES }} />
+
       <div
         style={{
           position: 'fixed',
@@ -502,15 +491,42 @@ export default function JournalPage() {
         }}
       />
 
-      {/* ========== STARS ========== */}
       <div
         style={{
           position: 'fixed',
-          inset: 0,
+          top: '35%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '1100px',
+          height: '1100px',
+          borderRadius: '50%',
+          background:
+            'radial-gradient(circle, rgba(74,139,194,0.18) 0%, rgba(42,90,156,0.08) 40%, transparent 65%)',
+          filter: 'blur(60px)',
+          animation: 'eclipseBreath 18s ease-in-out infinite',
           zIndex: 1,
           pointerEvents: 'none',
         }}
-      >
+      />
+
+      <div
+        style={{
+          position: 'fixed',
+          top: '65%',
+          left: '15%',
+          width: '800px',
+          height: '800px',
+          borderRadius: '50%',
+          background:
+            'radial-gradient(circle, rgba(120,160,220,0.06) 0%, transparent 65%)',
+          filter: 'blur(70px)',
+          animation: 'eclipseBreath 24s ease-in-out infinite reverse',
+          zIndex: 1,
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div style={{ position: 'fixed', inset: 0, zIndex: 1, pointerEvents: 'none' }}>
         {stars.map((s, i) => (
           <div
             key={i}
@@ -524,14 +540,13 @@ export default function JournalPage() {
               background: 'rgba(220, 230, 245, 0.9)',
               boxShadow: '0 0 4px rgba(160, 200, 240, 0.6)',
               opacity: s.opacity,
-              animation: `starTwinkle ${s.duration} ease-in-out infinite`,
+              animation: `lTwinkle ${s.duration} ease-in-out infinite`,
               animationDelay: s.delay,
             }}
           />
         ))}
       </div>
 
-      {/* ========== DISTANT CRESCENT MOON ========== */}
       <div
         style={{
           position: 'fixed',
@@ -555,7 +570,6 @@ export default function JournalPage() {
             animation: 'moonBreathe 12s ease-in-out infinite',
           }}
         />
-        {/* Dark overlay to cut the crescent */}
         <div
           style={{
             position: 'absolute',
@@ -571,7 +585,6 @@ export default function JournalPage() {
         />
       </div>
 
-      {/* ========== LARGE FADED BOOK SILHOUETTE ========== */}
       <div
         style={{
           position: 'fixed',
@@ -586,7 +599,6 @@ export default function JournalPage() {
         }}
       >
         <svg viewBox="0 0 900 700" style={{ width: '100%', height: '100%' }}>
-          {/* Open book outline */}
           <path
             d="M 450 200 Q 300 180 150 220 L 150 560 Q 300 520 450 540 Q 600 520 750 560 L 750 220 Q 600 180 450 200 Z"
             fill="none"
@@ -601,7 +613,6 @@ export default function JournalPage() {
             stroke="rgba(180, 210, 240, 0.6)"
             strokeWidth="1.5"
           />
-          {/* Pages lines on left */}
           {[260, 300, 340, 380, 420, 460].map((y) => (
             <line
               key={`l-${y}`}
@@ -613,7 +624,6 @@ export default function JournalPage() {
               strokeWidth="1"
             />
           ))}
-          {/* Pages lines on right */}
           {[260, 300, 340, 380, 420, 460].map((y) => (
             <line
               key={`r-${y}`}
@@ -628,7 +638,6 @@ export default function JournalPage() {
         </svg>
       </div>
 
-      {/* ========== FLOATING PAGES ========== */}
       <div
         style={{
           position: 'fixed',
@@ -645,13 +654,13 @@ export default function JournalPage() {
               position: 'absolute',
               left: p.left,
               top: p.top,
-              width: p.size,
-              height: p.size * 1.3,
+              width: asNum(p.size),
+              height: asNum(p.size) * 1.3,
               background:
                 'linear-gradient(180deg, rgba(220, 230, 245, 0.15), rgba(180, 210, 240, 0.05))',
               border: '1px solid rgba(180, 210, 240, 0.15)',
               borderRadius: 2,
-              transform: `rotate(${p.rotation})`,
+              transform: `rotate(${p.rotation}deg)`,
               opacity: p.opacity,
               boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
               animation: `pageDrift ${p.duration} ease-in-out infinite`,
@@ -661,7 +670,6 @@ export default function JournalPage() {
         ))}
       </div>
 
-      {/* ========== FLOATING QUILL SILHOUETTES ========== */}
       <div
         style={{
           position: 'fixed',
@@ -708,7 +716,6 @@ export default function JournalPage() {
         ))}
       </div>
 
-      {/* ========== INK DROPS ========== */}
       <div
         style={{
           position: 'fixed',
@@ -724,21 +731,21 @@ export default function JournalPage() {
             style={{
               position: 'absolute',
               left: d.left,
-              top: d.top,
+              top: '110%',
               width: d.size,
               height: d.size,
               borderRadius: '50%',
               background:
                 'radial-gradient(circle, rgba(180, 210, 240, 0.9) 0%, rgba(100, 150, 200, 0.4) 70%, transparent 100%)',
               boxShadow: '0 0 8px 1px rgba(140, 180, 220, 0.5)',
-              animation: `inkFloat ${d.duration} ease-in-out infinite`,
+              opacity: d.opacity,
+              animation: `lDrift ${d.duration} ease-in-out infinite`,
               animationDelay: d.delay,
             }}
           />
         ))}
       </div>
 
-      {/* ========== VIGNETTE ========== */}
       <div
         style={{
           position: 'fixed',
@@ -752,32 +759,10 @@ export default function JournalPage() {
         }}
       />
 
-      {/* ========== PAGE CONTENT ========== */}
-      <div
-        style={{
-          position: 'relative',
-          zIndex: 10,
-          minHeight: '100vh',
-          padding: '130px 24px 80px',
-        }}
-      >
-        {/* ================= SHELF VIEW ================= */}
+      <div style={{ position: 'relative', zIndex: 10, minHeight: '100vh', padding: '130px 24px 80px' }}>
         {!activeJournalId && (
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <div
-              className="fade-up"
-              style={{
-                textAlign: 'center',
-                marginBottom: 60,
-                animationDelay: '0.2s',
-              }}
-            >
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div className="fade-up" style={{ textAlign: 'center', marginBottom: 60, animationDelay: '0.2s' }}>
               <div
                 style={{
                   fontFamily: "'Marcellus', serif",
@@ -838,12 +823,8 @@ export default function JournalPage() {
               {journals.map((j) => {
                 const th = THEMES[j.theme] || THEMES.midnight;
                 const pagesLabel = isAr
-                  ? `${j.entries.length} ${
-                      j.entries.length === 1 ? 'صفحة' : 'صفحات'
-                    }`
-                  : `${j.entries.length} ${
-                      j.entries.length === 1 ? 'page' : 'pages'
-                    }`;
+                  ? `${j.entries.length} ${j.entries.length === 1 ? 'صفحة' : 'صفحات'}`
+                  : `${j.entries.length} ${j.entries.length === 1 ? 'page' : 'pages'}`;
                 return (
                   <button
                     key={j.id}
@@ -857,8 +838,7 @@ export default function JournalPage() {
                   >
                     <div
                       style={{
-                        transition:
-                          'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
+                        transition: 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
                       }}
                       onMouseEnter={(e) =>
                         (e.currentTarget.style.transform = 'translateY(-12px)')
@@ -994,7 +974,8 @@ export default function JournalPage() {
                       '0 0 70px rgba(74,139,194,0.5), inset 0 0 40px rgba(42,90,156,0.35)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(160,200,240,0.4)';
+                    e.currentTarget.style.borderColor =
+                      'rgba(160,200,240,0.4)';
                     e.currentTarget.style.boxShadow =
                       '0 0 40px rgba(74,139,194,0.15), inset 0 0 30px rgba(42,90,156,0.2)';
                   }}
@@ -1014,7 +995,6 @@ export default function JournalPage() {
           </div>
         )}
 
-        {/* ================= NOTEBOOK VIEW ================= */}
         {activeJournalId && activeJournal && (
           <div
             style={{
@@ -1064,7 +1044,9 @@ export default function JournalPage() {
               <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                 <button
                   onClick={() => setHandwriting((h) => !h)}
-                  style={handwriting ? btnBlueActive(isAr) : btnOutline(isAr)}
+                  style={
+                    handwriting ? btnBlueActive(isAr) : btnOutline(isAr)
+                  }
                 >
                   {handwriting
                     ? t('⌨ Typing', '⌨ كتابة')
@@ -1361,14 +1343,16 @@ export default function JournalPage() {
                               (e.text || '')
                                 .slice(0, 90)
                                 .replace(/\s+/g, ' ')
-                                .trim() || (isAr ? 'صفحة فارغة' : 'Empty page');
+                                .trim() ||
+                              (isAr ? 'صفحة فارغة' : 'Empty page');
                             return (
                               <div
                                 key={e.id}
                                 onClick={() => loadEntry(e.id)}
                                 style={{
                                   padding: '16px 18px',
-                                  border: '1px solid rgba(120,140,170,0.28)',
+                                  border:
+                                    '1px solid rgba(120,140,170,0.28)',
                                   borderRadius: 4,
                                   background: 'rgba(255,255,255,0.3)',
                                   cursor: 'pointer',
@@ -1392,7 +1376,9 @@ export default function JournalPage() {
                                     fontFamily: "'Marcellus', serif",
                                     fontSize: '0.8rem',
                                     letterSpacing: isAr ? 0 : '0.14em',
-                                    textTransform: isAr ? 'none' : 'uppercase',
+                                    textTransform: isAr
+                                      ? 'none'
+                                      : 'uppercase',
                                     color: currentTheme.pageInk,
                                     opacity: 0.88,
                                     marginBottom: 8,
@@ -1416,7 +1402,9 @@ export default function JournalPage() {
                                     fontFamily: "'Marcellus', serif",
                                     fontSize: '0.6rem',
                                     letterSpacing: isAr ? 0 : '0.25em',
-                                    textTransform: isAr ? 'none' : 'uppercase',
+                                    textTransform: isAr
+                                      ? 'none'
+                                      : 'uppercase',
                                     color: currentTheme.pageInk,
                                     opacity: 0.48,
                                     marginTop: 10,
@@ -1452,7 +1440,6 @@ export default function JournalPage() {
           </div>
         )}
 
-        {/* ================= CREATE MODAL ================= */}
         {modalOpen && (
           <div
             style={{
@@ -1530,7 +1517,8 @@ export default function JournalPage() {
               <div
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
+                  gridTemplateColumns:
+                    'repeat(auto-fill, minmax(120px, 1fr))',
                   gap: 14,
                   marginBottom: 36,
                 }}
@@ -1613,7 +1601,6 @@ export default function JournalPage() {
           </div>
         )}
 
-        {/* ================= TOAST ================= */}
         {toastVisible && (
           <div
             style={{
@@ -1638,43 +1625,6 @@ export default function JournalPage() {
           </div>
         )}
       </div>
-
-      {/* ========== KEYFRAMES ========== */}
-      <style jsx global>{`
-        @keyframes bookFloat {
-          0%, 100% { transform: translateY(0) rotateY(-6deg); }
-          50% { transform: translateY(-10px) rotateY(-6deg); }
-        }
-        @keyframes inkFloat {
-          0%   { transform: translate(0, 0); opacity: 0; }
-          15%  { opacity: 0.9; }
-          50%  { transform: translate(15px, -60px); }
-          85%  { opacity: 0.9; }
-          100% { transform: translate(-10px, -120px); opacity: 0; }
-        }
-        @keyframes starTwinkle {
-          0%, 100% { opacity: 0.15; transform: scale(1); }
-          50% { opacity: 0.8; transform: scale(1.3); }
-        }
-        @keyframes moonBreathe {
-          0%, 100% { transform: scale(1); opacity: 0.9; }
-          50% { transform: scale(1.05); opacity: 1; }
-        }
-        @keyframes pageDrift {
-          0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-          20%  { opacity: 0.1; }
-          50%  { transform: translate(30px, -40px) rotate(8deg); }
-          80%  { opacity: 0.1; }
-          100% { transform: translate(-20px, -100px) rotate(-5deg); opacity: 0; }
-        }
-        @keyframes quillDrift {
-          0%   { transform: translateX(0) translateY(0) rotate(-15deg); opacity: 0; }
-          10%  { opacity: 0.12; }
-          50%  { transform: translateX(60vw) translateY(-30px) rotate(-5deg); }
-          90%  { opacity: 0.12; }
-          100% { transform: translateX(120vw) translateY(-60px) rotate(5deg); opacity: 0; }
-        }
-      `}</style>
     </div>
   );
 }
