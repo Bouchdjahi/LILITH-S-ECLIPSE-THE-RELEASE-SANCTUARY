@@ -217,7 +217,7 @@ const GLOBAL_KEYFRAMES = `
 `;
 
 /* =========================================================
-   HELPERS — Cast helpers so TypeScript never complains
+   HELPERS
    ========================================================= */
 
 const asNum = (v: string | number): number =>
@@ -283,7 +283,7 @@ export default function JournalPage() {
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
     const inkArr: Mote[] = [];
-    for (let i = 0; i < (isMobile ? 20 : 40); i++) {
+    for (let i = 0; i < (isMobile ? 15 : 40); i++) {
       inkArr.push({
         left: Math.random() * 100 + '%',
         delay: `-${Math.random() * 30}s`,
@@ -295,7 +295,7 @@ export default function JournalPage() {
     setInkDrops(inkArr);
 
     const starArr: Star[] = [];
-    for (let i = 0; i < (isMobile ? 40 : 90); i++) {
+    for (let i = 0; i < (isMobile ? 30 : 90); i++) {
       starArr.push({
         left: Math.random() * 100 + '%',
         top: Math.random() * 100 + '%',
@@ -308,7 +308,7 @@ export default function JournalPage() {
     setStars(starArr);
 
     const pageArr: FloatingPage[] = [];
-    for (let i = 0; i < (isMobile ? 3 : 6); i++) {
+    for (let i = 0; i < (isMobile ? 2 : 6); i++) {
       pageArr.push({
         left: `${5 + Math.random() * 90}%`,
         top: `${5 + Math.random() * 85}%`,
@@ -322,7 +322,7 @@ export default function JournalPage() {
     setPages(pageArr);
 
     const quillArr: Quill[] = [];
-    for (let i = 0; i < (isMobile ? 1 : 2); i++) {
+    for (let i = 0; i < (isMobile ? 0 : 2); i++) {
       quillArr.push({
         top: `${20 + Math.random() * 60}%`,
         delay: `-${Math.random() * 60}s`,
@@ -481,6 +481,7 @@ export default function JournalPage() {
     <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
       <style dangerouslySetInnerHTML={{ __html: GLOBAL_KEYFRAMES }} />
 
+      {/* Background */}
       <div
         style={{
           position: 'fixed',
@@ -491,6 +492,7 @@ export default function JournalPage() {
         }}
       />
 
+      {/* Breathing glows */}
       <div
         style={{
           position: 'fixed',
@@ -508,7 +510,6 @@ export default function JournalPage() {
           pointerEvents: 'none',
         }}
       />
-
       <div
         style={{
           position: 'fixed',
@@ -526,6 +527,7 @@ export default function JournalPage() {
         }}
       />
 
+      {/* Stars */}
       <div style={{ position: 'fixed', inset: 0, zIndex: 1, pointerEvents: 'none' }}>
         {stars.map((s, i) => (
           <div
@@ -547,6 +549,7 @@ export default function JournalPage() {
         ))}
       </div>
 
+      {/* Crescent moon */}
       <div
         style={{
           position: 'fixed',
@@ -585,6 +588,7 @@ export default function JournalPage() {
         />
       </div>
 
+      {/* Book silhouette */}
       <div
         style={{
           position: 'fixed',
@@ -605,39 +609,11 @@ export default function JournalPage() {
             stroke="rgba(180, 210, 240, 0.6)"
             strokeWidth="2"
           />
-          <line
-            x1="450"
-            y1="200"
-            x2="450"
-            y2="540"
-            stroke="rgba(180, 210, 240, 0.6)"
-            strokeWidth="1.5"
-          />
-          {[260, 300, 340, 380, 420, 460].map((y) => (
-            <line
-              key={`l-${y}`}
-              x1="200"
-              y1={y}
-              x2="400"
-              y2={y}
-              stroke="rgba(180, 210, 240, 0.4)"
-              strokeWidth="1"
-            />
-          ))}
-          {[260, 300, 340, 380, 420, 460].map((y) => (
-            <line
-              key={`r-${y}`}
-              x1="500"
-              y1={y}
-              x2="700"
-              y2={y}
-              stroke="rgba(180, 210, 240, 0.4)"
-              strokeWidth="1"
-            />
-          ))}
+          <line x1="450" y1="200" x2="450" y2="540" stroke="rgba(180, 210, 240, 0.6)" strokeWidth="1.5" />
         </svg>
       </div>
 
+      {/* Floating pages */}
       <div
         style={{
           position: 'fixed',
@@ -670,6 +646,7 @@ export default function JournalPage() {
         ))}
       </div>
 
+      {/* Quills */}
       <div
         style={{
           position: 'fixed',
@@ -697,25 +674,12 @@ export default function JournalPage() {
                 d="M 10 100 Q 60 70 120 30 Q 160 5 180 15 Q 170 40 140 60 Q 100 90 30 110 Q 20 110 10 100 Z"
                 fill="rgba(190, 215, 240, 0.35)"
               />
-              <path
-                d="M 20 105 Q 80 80 130 50"
-                stroke="rgba(190, 215, 240, 0.5)"
-                strokeWidth="1"
-                fill="none"
-              />
-              <line
-                x1="15"
-                y1="108"
-                x2="0"
-                y2="120"
-                stroke="rgba(190, 215, 240, 0.6)"
-                strokeWidth="1.5"
-              />
             </svg>
           </div>
         ))}
       </div>
 
+      {/* Ink drops */}
       <div
         style={{
           position: 'fixed',
@@ -746,6 +710,7 @@ export default function JournalPage() {
         ))}
       </div>
 
+      {/* Vignette */}
       <div
         style={{
           position: 'fixed',
@@ -759,48 +724,15 @@ export default function JournalPage() {
         }}
       />
 
-      <div style={{ position: 'relative', zIndex: 10, minHeight: '100vh', padding: '130px 24px 80px' }}>
+      {/* ============ CONTENT ============ */}
+      <div className="jn-content">
+        {/* ============ SHELF ============ */}
         {!activeJournalId && (
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div className="fade-up" style={{ textAlign: 'center', marginBottom: 60, animationDelay: '0.2s' }}>
-              <div
-                style={{
-                  fontFamily: "'Marcellus', serif",
-                  fontSize: '0.7rem',
-                  letterSpacing: isAr ? '0.1em' : '0.55em',
-                  color: 'var(--soft-blue)',
-                  textTransform: isAr ? 'none' : 'uppercase',
-                  marginBottom: 22,
-                  textShadow:
-                    '0 0 20px rgba(74,139,194,0.7), 0 2px 12px rgba(0,0,0,0.9)',
-                }}
-              >
-                {t('JOURNAL', 'المُذكّرات')}
-              </div>
-              <h2
-                style={{
-                  fontFamily: "'Marcellus', serif",
-                  fontSize: isAr ? '2.4rem' : '2.8rem',
-                  letterSpacing: isAr ? 0 : '0.2em',
-                  marginBottom: 20,
-                  textShadow:
-                    '0 2px 30px rgba(0,0,0,0.9), 0 0 60px rgba(74,139,194,0.7), 0 0 120px rgba(42,90,156,0.4)',
-                }}
-              >
-                {t('YOUR SHELF', 'رفّك')}
-              </h2>
-              <p
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontStyle: isAr ? 'normal' : 'italic',
-                  fontSize: '1.2rem',
-                  color: 'var(--silver)',
-                  maxWidth: 540,
-                  margin: '0 auto',
-                  lineHeight: 1.9,
-                  textShadow: '0 2px 12px rgba(0,0,0,0.95)',
-                }}
-              >
+          <div className="jn-shelf-wrap">
+            <div className="fade-up jn-shelf-header" style={{ animationDelay: '0.2s' }}>
+              <div className="jn-shelf-label">{t('JOURNAL', 'المُذكّرات')}</div>
+              <h2 className="jn-shelf-title">{t('YOUR SHELF', 'رفّك')}</h2>
+              <p className="jn-shelf-subtitle">
                 {t(
                   'A notebook that belongs entirely to you. Choose a cover. Choose a feeling. Begin.',
                   'دفتر يخصك وحدك. اختر غلافًا. اختر إحساسًا. ابدأ.'
@@ -808,18 +740,7 @@ export default function JournalPage() {
               </p>
             </div>
 
-            <div
-              className="fade-up"
-              style={{
-                width: '100%',
-                maxWidth: 1100,
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-                gap: '44px 34px',
-                padding: '40px 0',
-                animationDelay: '0.6s',
-              }}
-            >
+            <div className="fade-up jn-shelf-grid" style={{ animationDelay: '0.6s' }}>
               {journals.map((j) => {
                 const th = THEMES[j.theme] || THEMES.midnight;
                 const pagesLabel = isAr
@@ -829,108 +750,34 @@ export default function JournalPage() {
                   <button
                     key={j.id}
                     onClick={() => openNotebook(j.id)}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      padding: 0,
-                      cursor: 'pointer',
-                    }}
+                    className="jn-book-btn"
                   >
-                    <div
-                      style={{
-                        transition: 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
-                      }}
-                      onMouseEnter={(e) =>
-                        (e.currentTarget.style.transform = 'translateY(-12px)')
-                      }
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.transform = 'translateY(0)')
-                      }
-                    >
+                    <div className="jn-book-inner">
                       <div
+                        className="jn-book"
                         style={{
-                          position: 'relative',
-                          width: '100%',
-                          aspectRatio: '3 / 4.3',
-                          borderRadius: isAr
-                            ? '10px 3px 3px 10px'
-                            : '3px 10px 10px 3px',
                           background: th.coverBg,
                           color: th.coverInk,
-                          boxShadow: `0 30px 70px rgba(0,0,0,0.85), 0 0 60px rgba(74,139,194,0.3), 0 0 100px rgba(42,90,156,0.15), inset -8px 0 20px rgba(0,0,0,0.5), inset 8px 0 20px rgba(255,255,255,0.05)`,
-                          overflow: 'hidden',
                         }}
                       >
-                        <div
-                          style={{
-                            position: 'absolute',
-                            top: 0,
-                            [isAr ? 'right' : 'left']: 0,
-                            bottom: 0,
-                            width: 16,
-                            background: isAr
-                              ? 'linear-gradient(to left, rgba(0,0,0,0.6), rgba(255,255,255,0.06) 40%, rgba(0,0,0,0.35))'
-                              : 'linear-gradient(to right, rgba(0,0,0,0.6), rgba(255,255,255,0.06) 40%, rgba(0,0,0,0.35))',
-                          }}
-                        />
-                        <div
-                          style={{
-                            position: 'absolute',
-                            top: 14,
-                            [isAr ? 'left' : 'right']: 14,
-                            width: 30,
-                            height: 30,
-                            borderTop: '1px solid rgba(160,200,240,0.45)',
-                            [isAr ? 'borderLeft' : 'borderRight']:
-                              '1px solid rgba(160,200,240,0.45)',
-                          }}
-                        />
-                        <div
-                          style={{
-                            position: 'absolute',
-                            inset: 0,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'space-between',
-                            padding: isAr
-                              ? '38px 42px 30px 28px'
-                              : '38px 28px 30px 42px',
-                          }}
-                        >
+                        <div className="jn-book-spine" />
+                        <div className="jn-book-corner" />
+                        <div className="jn-book-content">
                           <div
+                            className="jn-book-motif"
                             style={{
-                              fontSize: '1.8rem',
-                              opacity: 0.85,
                               color: th.coverAccent,
                               textShadow: `0 0 15px ${th.coverAccent}`,
                             }}
                           >
                             {th.motif}
                           </div>
-                          <div
-                            style={{
-                              fontFamily: "'Marcellus', serif",
-                              fontSize: '1.05rem',
-                              letterSpacing: isAr ? 0 : '0.14em',
-                              lineHeight: 1.5,
-                              textTransform: isAr ? 'none' : 'uppercase',
-                              color: th.coverInk,
-                              textAlign: 'left',
-                              wordBreak: 'break-word',
-                            }}
-                          >
+                          <div className="jn-book-title" style={{ color: th.coverInk }}>
                             {j.name}
                           </div>
                           <div
-                            style={{
-                              fontFamily: "'Cormorant Garamond', serif",
-                              fontSize: '0.7rem',
-                              letterSpacing: isAr ? 0 : '0.3em',
-                              textTransform: isAr ? 'none' : 'uppercase',
-                              color: th.coverAccent,
-                              opacity: 0.9,
-                              fontStyle: isAr ? 'normal' : 'italic',
-                            }}
+                            className="jn-book-meta"
+                            style={{ color: th.coverAccent }}
                           >
                             {pagesLabel}
                           </div>
@@ -941,119 +788,38 @@ export default function JournalPage() {
                 );
               })}
 
-              <button
-                onClick={openCreateModal}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  padding: 0,
-                  cursor: 'pointer',
-                }}
-              >
-                <div
-                  style={{
-                    width: '100%',
-                    aspectRatio: '3 / 4.3',
-                    borderRadius: isAr
-                      ? '10px 3px 3px 10px'
-                      : '3px 10px 10px 3px',
-                    background: 'rgba(13,27,62,0.5)',
-                    border: '1px dashed rgba(160,200,240,0.4)',
-                    boxShadow:
-                      '0 0 40px rgba(74,139,194,0.15), inset 0 0 30px rgba(42,90,156,0.2)',
-                    backdropFilter: 'blur(14px)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'var(--soft-blue)',
-                    transition: 'all 0.5s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--soft-blue)';
-                    e.currentTarget.style.boxShadow =
-                      '0 0 70px rgba(74,139,194,0.5), inset 0 0 40px rgba(42,90,156,0.35)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor =
-                      'rgba(160,200,240,0.4)';
-                    e.currentTarget.style.boxShadow =
-                      '0 0 40px rgba(74,139,194,0.15), inset 0 0 30px rgba(42,90,156,0.2)';
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "'Marcellus', serif",
-                      fontSize: '2.4rem',
-                      textShadow: '0 0 20px rgba(74,139,194,0.9)',
-                    }}
-                  >
-                    +
-                  </span>
+              <button onClick={openCreateModal} className="jn-book-btn">
+                <div className="jn-new-book">
+                  <span className="jn-new-plus">+</span>
                 </div>
               </button>
             </div>
           </div>
         )}
 
+        {/* ============ NOTEBOOK ============ */}
         {activeJournalId && activeJournal && (
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              width: '100%',
-              maxWidth: 1200,
-              margin: '0 auto',
-            }}
-          >
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                gap: 16,
-                marginBottom: 36,
-                flexWrap: 'wrap',
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 16,
-                  flexWrap: 'wrap',
-                }}
-              >
-                <button onClick={closeNotebook} style={btnOutline(isAr)}>
+          <div className="jn-notebook-wrap">
+            <div className="jn-topbar">
+              <div className="jn-topbar-left">
+                <button onClick={closeNotebook} className="jn-btn-outline">
                   {t('← Shelf', '→ الرفّ')}
                 </button>
-                <div
-                  style={{
-                    fontFamily: "'Marcellus', serif",
-                    fontSize: '1.2rem',
-                    letterSpacing: isAr ? 0 : '0.18em',
-                    textTransform: isAr ? 'none' : 'uppercase',
-                    textShadow:
-                      '0 0 20px rgba(74,139,194,0.5), 0 2px 12px rgba(0,0,0,0.9)',
-                  }}
-                >
-                  {activeJournal.name}
-                </div>
+                <div className="jn-notebook-name">{activeJournal.name}</div>
               </div>
-              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <div className="jn-topbar-controls">
                 <button
                   onClick={() => setHandwriting((h) => !h)}
-                  style={
-                    handwriting ? btnBlueActive(isAr) : btnOutline(isAr)
+                  className={
+                    handwriting ? 'jn-btn-blue-active' : 'jn-btn-outline'
                   }
                 >
                   {handwriting
                     ? t('⌨ Typing', '⌨ كتابة')
                     : t('✍ Handwriting', '✍ خط اليد')}
                 </button>
-                <button onClick={deleteNotebook} style={btnOutline(isAr)}>
-                  {t('Delete Notebook', 'احذف الدفتر')}
+                <button onClick={deleteNotebook} className="jn-btn-outline">
+                  {t('Delete', 'احذف')}
                 </button>
               </div>
             </div>
@@ -1061,93 +827,33 @@ export default function JournalPage() {
             {!isBookOpen && (
               <div
                 onClick={() => setIsBookOpen(true)}
-                style={{
-                  perspective: 2000,
-                  margin: '20px auto 0',
-                  cursor: 'pointer',
-                }}
+                className="jn-closed-book-wrap"
               >
                 <div
-                  style={{
-                    position: 'relative',
-                    width: 'min(400px, 78vw)',
-                    aspectRatio: '3 / 4.3',
-                    borderRadius: isAr
-                      ? '10px 4px 4px 10px'
-                      : '4px 10px 10px 4px',
-                    background: currentTheme.coverBg,
-                    boxShadow: `0 45px 100px rgba(0,0,0,0.9), 0 0 120px rgba(74,139,194,0.5), 0 0 200px rgba(42,90,156,0.2), inset -10px 0 30px rgba(0,0,0,0.55), inset 10px 0 20px rgba(255,255,255,0.05)`,
-                    animation: 'bookFloat 7s ease-in-out infinite',
-                  }}
+                  className="jn-closed-book"
+                  style={{ background: currentTheme.coverBg }}
                 >
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      [isAr ? 'right' : 'left']: 0,
-                      bottom: 0,
-                      width: 20,
-                      background: isAr
-                        ? 'linear-gradient(to left, rgba(0,0,0,0.7), rgba(255,255,255,0.05) 40%, rgba(0,0,0,0.4))'
-                        : 'linear-gradient(to right, rgba(0,0,0,0.7), rgba(255,255,255,0.05) 40%, rgba(0,0,0,0.4))',
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: 20,
-                      [isAr ? 'left' : 'right']: 20,
-                      width: 40,
-                      height: 40,
-                      borderTop: '1px solid rgba(160,200,240,0.6)',
-                      [isAr ? 'borderLeft' : 'borderRight']:
-                        '1px solid rgba(160,200,240,0.6)',
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      padding: isAr
-                        ? '55px 70px 50px 46px'
-                        : '55px 46px 50px 70px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      color: currentTheme.coverInk,
-                    }}
-                  >
+                  <div className="jn-book-spine" />
+                  <div className="jn-book-corner" />
+                  <div className="jn-closed-book-inner">
                     <div
+                      className="jn-closed-motif"
                       style={{
-                        fontSize: '2.4rem',
                         color: currentTheme.coverAccent,
-                        opacity: 0.9,
                         textShadow: `0 0 25px ${currentTheme.coverAccent}`,
                       }}
                     >
                       {currentTheme.motif}
                     </div>
                     <div
-                      style={{
-                        fontFamily: "'Marcellus', serif",
-                        fontSize: '1.5rem',
-                        letterSpacing: isAr ? 0 : '0.18em',
-                        lineHeight: 1.5,
-                        textTransform: isAr ? 'none' : 'uppercase',
-                      }}
+                      className="jn-closed-title"
+                      style={{ color: currentTheme.coverInk }}
                     >
                       {activeJournal.name}
                     </div>
                     <div
-                      style={{
-                        fontFamily: "'Cormorant Garamond', serif",
-                        fontStyle: isAr ? 'normal' : 'italic',
-                        fontSize: '0.8rem',
-                        letterSpacing: isAr ? 0 : '0.35em',
-                        textTransform: isAr ? 'none' : 'uppercase',
-                        color: currentTheme.coverAccent,
-                        opacity: 0.9,
-                      }}
+                      className="jn-closed-hint"
+                      style={{ color: currentTheme.coverAccent }}
                     >
                       {t('Click to open', 'اضغط للفتح')}
                     </div>
@@ -1157,282 +863,152 @@ export default function JournalPage() {
             )}
 
             {isBookOpen && (
-              <div
-                style={{
-                  perspective: 2400,
-                  width: '100%',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  marginTop: 20,
-                }}
-              >
+              <div className="jn-open-wrap">
                 <div
-                  style={{
-                    position: 'relative',
-                    width: 'min(1100px, 96vw)',
-                    aspectRatio: '16 / 10',
-                    background:
-                      'linear-gradient(180deg, #c8bfa8 0%, #a89d84 100%)',
-                    borderRadius: 14,
-                    padding: 26,
-                    boxShadow: `0 70px 160px rgba(0,0,0,0.95), 0 0 180px rgba(74,139,194,0.4), 0 0 260px rgba(42,90,156,0.15), inset 0 0 70px rgba(0,0,0,0.45)`,
-                    display: 'flex',
-                    gap: 4,
-                  }}
+                  className="jn-spread"
+                  style={{ background: 'linear-gradient(180deg, #c8bfa8 0%, #a89d84 100%)' }}
                 >
+                  <div className="jn-spine" />
+
+                  {/* Page 1 — writing */}
                   <div
+                    className="jn-page"
                     style={{
-                      position: 'absolute',
-                      top: 26,
-                      bottom: 26,
-                      left: '50%',
-                      width: 24,
-                      transform: 'translateX(-50%)',
-                      background:
-                        'linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.18) 40%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.55))',
-                      zIndex: 5,
-                      pointerEvents: 'none',
+                      background: currentTheme.pageBg,
+                      color: currentTheme.pageInk,
+                      fontFamily: currentFont,
                     }}
-                  />
-                  <div style={pageStyle(currentTheme)}>
-                    <div
+                  >
+                    <div className="jn-page-header">
+                      <div
+                        className="jn-page-date"
+                        style={{ color: currentTheme.pageInk }}
+                      >
+                        {dateString}
+                      </div>
+                      <div className="jn-mood-row">
+                        {MOODS.map((m) => (
+                          <div
+                            key={m.id}
+                            onClick={() => setMood(m.id === mood ? null : m.id)}
+                            className={`jn-mood-dot ${
+                              mood === m.id ? 'active' : ''
+                            }`}
+                            style={{
+                              background: m.color,
+                              boxShadow:
+                                mood === m.id
+                                  ? `0 0 0 2px rgba(0,0,0,0.18), 0 0 14px ${m.color}`
+                                  : 'none',
+                            }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <textarea
+                      className="jn-textarea"
+                      value={entryText}
+                      onChange={(e) => handleTextChange(e.target.value)}
+                      placeholder={t(
+                        'Write here. Only the page sees it.',
+                        'اكتب هنا. لا يرى هذا إلا الصفحة.'
+                      )}
                       style={{
-                        position: 'relative',
-                        zIndex: 1,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        height: '100%',
+                        color: currentTheme.pageInk,
+                        fontFamily: currentFont,
+                        caretColor: currentTheme.pageAccent,
+                        direction: isAr ? 'rtl' : 'ltr',
+                        textAlign: isAr ? 'right' : 'left',
                       }}
+                    />
+                    <div
+                      className="jn-page-footer"
+                      style={{ color: currentTheme.pageInk }}
                     >
-                      <div
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'flex-end',
-                          marginBottom: 24,
-                          paddingBottom: 14,
-                          borderBottom: '1px dashed rgba(120,140,170,0.3)',
-                        }}
-                      >
-                        <div
-                          style={{
-                            fontFamily: "'Marcellus', serif",
-                            fontSize: '0.68rem',
-                            letterSpacing: isAr ? 0 : '0.35em',
-                            textTransform: isAr ? 'none' : 'uppercase',
-                            color: currentTheme.pageInk,
-                            opacity: 0.6,
-                          }}
-                        >
-                          {dateString}
-                        </div>
-                        <div style={{ display: 'flex', gap: 8 }}>
-                          {MOODS.map((m) => (
-                            <div
-                              key={m.id}
-                              onClick={() =>
-                                setMood(m.id === mood ? null : m.id)
-                              }
-                              style={{
-                                width: 13,
-                                height: 13,
-                                borderRadius: '50%',
-                                background: m.color,
-                                border: '1px solid rgba(0,0,0,0.18)',
-                                cursor: 'pointer',
-                                transform:
-                                  mood === m.id ? 'scale(1.2)' : 'scale(1)',
-                                boxShadow:
-                                  mood === m.id
-                                    ? `0 0 0 2px rgba(0,0,0,0.18), 0 0 14px ${m.color}`
-                                    : 'none',
-                                transition: 'all 0.3s ease',
-                              }}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                      <textarea
-                        value={entryText}
-                        onChange={(e) => handleTextChange(e.target.value)}
-                        placeholder={t(
-                          'Write here. Only the page sees it.',
-                          'اكتب هنا. لا يرى هذا إلا الصفحة.'
-                        )}
-                        style={{
-                          flex: 1,
-                          background: 'transparent',
-                          border: 'none',
-                          outline: 'none',
-                          resize: 'none',
-                          color: currentTheme.pageInk,
-                          fontFamily: currentFont,
-                          fontSize: '1.2rem',
-                          lineHeight: 1.95,
-                          caretColor: currentTheme.pageAccent,
-                          minHeight: 200,
-                          direction: isAr ? 'rtl' : 'ltr',
-                          textAlign: isAr ? 'right' : 'left',
-                        }}
-                      />
-                      <div
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center',
-                          marginTop: 20,
-                          paddingTop: 14,
-                          borderTop: '1px dashed rgba(120,140,170,0.3)',
-                          fontFamily: "'Marcellus', serif",
-                          fontSize: '0.65rem',
-                          letterSpacing: isAr ? 0 : '0.28em',
-                          textTransform: isAr ? 'none' : 'uppercase',
-                          color: currentTheme.pageInk,
-                          opacity: 0.55,
-                        }}
-                      >
-                        <span>{pageNumber}</span>
-                        <span>{t('Autosaved', 'محفوظ تلقائيًا')}</span>
-                      </div>
+                      <span>{pageNumber}</span>
+                      <span>{t('Autosaved', 'محفوظ تلقائيًا')}</span>
                     </div>
                   </div>
 
-                  <div style={pageStyle(currentTheme)}>
-                    <div style={{ position: 'relative', zIndex: 1 }}>
+                  {/* Page 2 — past entries */}
+                  <div
+                    className="jn-page"
+                    style={{
+                      background: currentTheme.pageBg,
+                      color: currentTheme.pageInk,
+                    }}
+                  >
+                    <div
+                      className="jn-entries-title"
+                      style={{ color: currentTheme.pageInk }}
+                    >
+                      {t('PAST PAGES', 'الصفحات السابقة')}
+                    </div>
+                    {activeJournal.entries.length === 0 ? (
                       <div
-                        style={{
-                          fontFamily: "'Marcellus', serif",
-                          fontSize: '0.95rem',
-                          letterSpacing: isAr ? 0 : '0.18em',
-                          textTransform: isAr ? 'none' : 'uppercase',
-                          marginBottom: 16,
-                          color: currentTheme.pageInk,
-                          opacity: 0.72,
-                        }}
+                        className="jn-empty"
+                        style={{ color: currentTheme.pageInk }}
                       >
-                        {t('PAST PAGES', 'الصفحات السابقة')}
+                        {t(
+                          'Your pages will appear here. Write something to begin.',
+                          'ستظهر صفحاتك هنا. اكتب شيئًا لتبدأ.'
+                        )}
                       </div>
-                      {activeJournal.entries.length === 0 ? (
-                        <div
-                          style={{
-                            textAlign: 'center',
-                            padding: '50px 20px',
-                            fontFamily: "'Cormorant Garamond', serif",
-                            fontStyle: isAr ? 'normal' : 'italic',
-                            color: currentTheme.pageInk,
-                            opacity: 0.55,
-                            fontSize: '1.1rem',
-                            lineHeight: 1.9,
-                          }}
-                        >
-                          {t(
-                            'Your pages will appear here. Write something to begin.',
-                            'ستظهر صفحاتك هنا. اكتب شيئًا لتبدأ.'
-                          )}
-                        </div>
-                      ) : (
-                        <div
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: 12,
-                          }}
-                        >
-                          {activeJournal.entries.map((e) => {
-                            const preview =
-                              (e.text || '')
-                                .slice(0, 90)
-                                .replace(/\s+/g, ' ')
-                                .trim() ||
-                              (isAr ? 'صفحة فارغة' : 'Empty page');
-                            return (
+                    ) : (
+                      <div className="jn-entries-list">
+                        {activeJournal.entries.map((e) => {
+                          const preview =
+                            (e.text || '')
+                              .slice(0, 90)
+                              .replace(/\s+/g, ' ')
+                              .trim() || (isAr ? 'صفحة فارغة' : 'Empty page');
+                          return (
+                            <div
+                              key={e.id}
+                              onClick={() => loadEntry(e.id)}
+                              className="jn-entry-card"
+                              style={{
+                                borderColor: 'rgba(120,140,170,0.28)',
+                                color: currentTheme.pageInk,
+                              }}
+                            >
                               <div
-                                key={e.id}
-                                onClick={() => loadEntry(e.id)}
+                                className="jn-entry-title"
                                 style={{
-                                  padding: '16px 18px',
-                                  border:
-                                    '1px solid rgba(120,140,170,0.28)',
-                                  borderRadius: 4,
-                                  background: 'rgba(255,255,255,0.3)',
-                                  cursor: 'pointer',
-                                  transition: 'all 0.4s ease',
-                                }}
-                                onMouseEnter={(el) => {
-                                  el.currentTarget.style.background =
-                                    'rgba(255,255,255,0.55)';
-                                  el.currentTarget.style.borderColor =
-                                    currentTheme.pageAccent;
-                                }}
-                                onMouseLeave={(el) => {
-                                  el.currentTarget.style.background =
-                                    'rgba(255,255,255,0.3)';
-                                  el.currentTarget.style.borderColor =
-                                    'rgba(120,140,170,0.28)';
+                                  color: currentTheme.pageInk,
+                                  fontFamily: "'Marcellus', serif",
                                 }}
                               >
-                                <div
-                                  style={{
-                                    fontFamily: "'Marcellus', serif",
-                                    fontSize: '0.8rem',
-                                    letterSpacing: isAr ? 0 : '0.14em',
-                                    textTransform: isAr
-                                      ? 'none'
-                                      : 'uppercase',
-                                    color: currentTheme.pageInk,
-                                    opacity: 0.88,
-                                    marginBottom: 8,
-                                  }}
-                                >
-                                  {e.title}
-                                </div>
-                                <div
-                                  style={{
-                                    fontFamily: currentFont,
-                                    fontSize: '0.98rem',
-                                    lineHeight: 1.5,
-                                    color: currentTheme.pageInk,
-                                    opacity: 0.62,
-                                  }}
-                                >
-                                  {preview}
-                                </div>
-                                <div
-                                  style={{
-                                    fontFamily: "'Marcellus', serif",
-                                    fontSize: '0.6rem',
-                                    letterSpacing: isAr ? 0 : '0.25em',
-                                    textTransform: isAr
-                                      ? 'none'
-                                      : 'uppercase',
-                                    color: currentTheme.pageInk,
-                                    opacity: 0.48,
-                                    marginTop: 10,
-                                  }}
-                                >
-                                  {shortDate(e.date)}
-                                </div>
+                                {e.title}
                               </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
+                              <div
+                                className="jn-entry-preview"
+                                style={{
+                                  color: currentTheme.pageInk,
+                                  fontFamily: currentFont,
+                                }}
+                              >
+                                {preview}
+                              </div>
+                              <div
+                                className="jn-entry-date"
+                                style={{ color: currentTheme.pageInk }}
+                              >
+                                {shortDate(e.date)}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
             )}
 
             {isBookOpen && (
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  gap: 12,
-                  marginTop: 32,
-                }}
-              >
-                <button onClick={newPage} style={btnOutline(isAr)}>
+              <div className="jn-newpage-wrap">
+                <button onClick={newPage} className="jn-btn-outline">
                   {t('+ New Page', '+ صفحة جديدة')}
                 </button>
               </div>
@@ -1440,267 +1016,886 @@ export default function JournalPage() {
           </div>
         )}
 
+        {/* ============ MODAL ============ */}
         {modalOpen && (
-          <div
-            style={{
-              position: 'fixed',
-              inset: 0,
-              background: 'rgba(5,5,8,0.92)',
-              backdropFilter: 'blur(18px)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 1000,
-              padding: 24,
-            }}
-          >
-            <div
-              style={{
-                background:
-                  'linear-gradient(160deg, rgba(20,30,50,0.98) 0%, rgba(10,15,28,0.98) 100%)',
-                border: '1px solid rgba(160,200,240,0.4)',
-                borderRadius: 18,
-                padding: '46px 44px',
-                maxWidth: 640,
-                width: '100%',
-                maxHeight: '90vh',
-                overflowY: 'auto',
-                boxShadow:
-                  '0 60px 140px rgba(0,0,0,0.95), 0 0 100px rgba(74,139,194,0.35), 0 0 180px rgba(42,90,156,0.2)',
-              }}
-            >
-              <h3
-                style={{
-                  fontFamily: "'Marcellus', serif",
-                  fontSize: '1.5rem',
-                  letterSpacing: isAr ? 0 : '0.18em',
-                  marginBottom: 10,
-                  textShadow: '0 0 20px rgba(74,139,194,0.5)',
-                }}
-              >
-                {t('NEW NOTEBOOK', 'دفتر جديد')}
-              </h3>
-              <div
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontStyle: isAr ? 'normal' : 'italic',
-                  color: 'var(--silver)',
-                  marginBottom: 32,
-                  fontSize: '1.1rem',
-                }}
-              >
+          <div className="jn-modal-backdrop" onClick={() => setModalOpen(false)}>
+            <div className="jn-modal" onClick={(e) => e.stopPropagation()}>
+              <h3 className="jn-modal-title">{t('NEW NOTEBOOK', 'دفتر جديد')}</h3>
+              <div className="jn-modal-sub">
                 {t('Give it a name and a feeling.', 'أعطه اسمًا وإحساسًا.')}
               </div>
 
-              <label style={modalLabel(isAr)}>{t('Name', 'الاسم')}</label>
+              <label className="jn-modal-label">{t('Name', 'الاسم')}</label>
               <input
                 type="text"
+                className="jn-modal-input"
                 value={newNotebookName}
                 onChange={(e) => setNewNotebookName(e.target.value)}
                 placeholder={t('My Daily Journal...', 'مُذكّراتي اليومية...')}
                 maxLength={40}
-                style={{
-                  width: '100%',
-                  padding: '16px 20px',
-                  background: 'rgba(13,27,62,0.7)',
-                  border: '1px solid rgba(160,200,240,0.3)',
-                  borderRadius: 10,
-                  color: 'var(--white)',
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: '1rem',
-                  outline: 'none',
-                  marginBottom: 32,
-                }}
               />
 
-              <label style={modalLabel(isAr)}>{t('Theme', 'الطابع')}</label>
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns:
-                    'repeat(auto-fill, minmax(120px, 1fr))',
-                  gap: 14,
-                  marginBottom: 36,
-                }}
-              >
+              <label className="jn-modal-label">{t('Theme', 'الطابع')}</label>
+              <div className="jn-theme-grid">
                 {Object.entries(THEMES).map(([id, th]) => (
                   <div
                     key={id}
                     onClick={() => setSelectedThemeId(id)}
-                    style={{
-                      cursor: 'pointer',
-                      borderRadius: 10,
-                      padding: '14px 12px',
-                      textAlign: 'center',
-                      border: `2px solid ${
-                        id === selectedThemeId
-                          ? 'var(--soft-blue)'
-                          : 'transparent'
-                      }`,
-                      background:
-                        id === selectedThemeId
-                          ? 'rgba(74,139,194,0.2)'
-                          : 'rgba(13,27,62,0.4)',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      gap: 10,
-                      transition: 'all 0.4s ease',
-                      boxShadow:
-                        id === selectedThemeId
-                          ? '0 0 25px rgba(74,139,194,0.5)'
-                          : 'none',
-                    }}
+                    className={`jn-theme-choice ${
+                      id === selectedThemeId ? 'selected' : ''
+                    }`}
                   >
                     <div
-                      style={{
-                        width: 46,
-                        height: 64,
-                        borderRadius: '3px 7px 7px 3px',
-                        background: th.coverBg,
-                        boxShadow:
-                          'inset -3px 0 6px rgba(0,0,0,0.45), 0 5px 14px rgba(0,0,0,0.55)',
-                      }}
+                      className="jn-theme-swatch"
+                      style={{ background: th.coverBg }}
                     />
-                    <div
-                      style={{
-                        fontFamily: "'Marcellus', serif",
-                        fontSize: '0.6rem',
-                        letterSpacing: isAr ? 0 : '0.22em',
-                        textTransform: isAr ? 'none' : 'uppercase',
-                        color:
-                          id === selectedThemeId
-                            ? 'var(--white)'
-                            : 'var(--silver)',
-                      }}
-                    >
+                    <div className="jn-theme-name">
                       {isAr ? th.nameAr : th.nameEn}
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div
-                style={{
-                  display: 'flex',
-                  gap: 14,
-                  justifyContent: isAr ? 'flex-start' : 'flex-end',
-                }}
-              >
+              <div className="jn-modal-actions">
                 <button
                   onClick={() => setModalOpen(false)}
-                  style={btnOutline(isAr)}
+                  className="jn-btn-outline"
                 >
                   {t('Cancel', 'إلغاء')}
                 </button>
-                <button onClick={confirmCreate} style={btnBlue(isAr)}>
-                  {t('Create Notebook', 'إنشاء الدفتر')}
+                <button onClick={confirmCreate} className="jn-btn-blue">
+                  {t('Create', 'إنشاء')}
                 </button>
               </div>
             </div>
           </div>
         )}
 
-        {toastVisible && (
-          <div
-            style={{
-              position: 'fixed',
-              bottom: 40,
-              left: '50%',
-              transform: 'translateX(-50%)',
-              padding: '16px 32px',
-              background: 'rgba(13,27,62,0.95)',
-              border: '1px solid rgba(160,200,240,0.4)',
-              borderRadius: 50,
-              fontFamily: "'Marcellus', serif",
-              fontSize: '0.75rem',
-              letterSpacing: isAr ? 0 : '0.2em',
-              textTransform: isAr ? 'none' : 'uppercase',
-              backdropFilter: 'blur(14px)',
-              zIndex: 2000,
-              boxShadow: '0 0 40px rgba(74,139,194,0.4)',
-            }}
-          >
-            {toast}
-          </div>
-        )}
+        {/* ============ TOAST ============ */}
+        {toastVisible && <div className="jn-toast">{toast}</div>}
       </div>
+
+      {/* ============ STYLES ============ */}
+      <style jsx global>{`
+        /* ---------- Base ---------- */
+        .jn-content {
+          position: relative;
+          z-index: 10;
+          min-height: 100vh;
+          padding: 130px 24px 80px;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+        }
+        .jn-shelf-wrap,
+        .jn-notebook-wrap {
+          width: 100%;
+          max-width: 1200px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        /* ---------- Header ---------- */
+        .jn-shelf-header {
+          text-align: center;
+          margin-bottom: 60px;
+        }
+        .jn-shelf-label {
+          font-family: 'Marcellus', serif;
+          color: var(--soft-blue);
+          text-transform: uppercase;
+          margin-bottom: 22px;
+          text-shadow: 0 0 20px rgba(74, 139, 194, 0.7),
+            0 2px 12px rgba(0, 0, 0, 0.9);
+        }
+        .jn-shelf-title {
+          font-family: 'Marcellus', serif;
+          color: var(--white);
+          text-shadow: 0 2px 30px rgba(0, 0, 0, 0.9),
+            0 0 60px rgba(74, 139, 194, 0.7);
+        }
+        .jn-shelf-subtitle {
+          font-family: 'Cormorant Garamond', serif;
+          font-style: italic;
+          color: var(--silver);
+          margin: 0 auto;
+          text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
+        }
+
+        /* ---------- Shelf grid + books ---------- */
+        .jn-shelf-grid {
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          gap: 44px 34px;
+        }
+        .jn-book-btn {
+          background: none;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          display: block;
+          width: 100%;
+        }
+        .jn-book-inner {
+          transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .jn-book-btn:hover .jn-book-inner {
+          transform: translateY(-12px);
+        }
+        .jn-book {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 3 / 4.3;
+          border-radius: 3px 10px 10px 3px;
+          overflow: hidden;
+          box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85),
+            0 0 60px rgba(74, 139, 194, 0.3),
+            0 0 100px rgba(42, 90, 156, 0.15),
+            inset -8px 0 20px rgba(0, 0, 0, 0.5),
+            inset 8px 0 20px rgba(255, 255, 255, 0.05);
+        }
+        .jn-book-spine {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          width: 16px;
+          background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.6),
+            rgba(255, 255, 255, 0.06) 40%,
+            rgba(0, 0, 0, 0.35)
+          );
+        }
+        .jn-book-corner {
+          position: absolute;
+          top: 14px;
+          right: 14px;
+          width: 30px;
+          height: 30px;
+          border-top: 1px solid rgba(160, 200, 240, 0.45);
+          border-right: 1px solid rgba(160, 200, 240, 0.45);
+        }
+        .jn-book-content {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 38px 28px 30px 42px;
+        }
+        .jn-book-motif {
+          font-size: 1.8rem;
+          opacity: 0.85;
+        }
+        .jn-book-title {
+          font-family: 'Marcellus', serif;
+          font-size: 1.05rem;
+          letter-spacing: 0.14em;
+          line-height: 1.5;
+          text-transform: uppercase;
+          text-align: left;
+          word-break: break-word;
+        }
+        .jn-book-meta {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 0.7rem;
+          letter-spacing: 0.3em;
+          text-transform: uppercase;
+          opacity: 0.9;
+          font-style: italic;
+        }
+
+        .jn-new-book {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 3 / 4.3;
+          border-radius: 3px 10px 10px 3px;
+          background: rgba(13, 27, 62, 0.5);
+          border: 1px dashed rgba(160, 200, 240, 0.4);
+          box-shadow: 0 0 40px rgba(74, 139, 194, 0.15),
+            inset 0 0 30px rgba(42, 90, 156, 0.2);
+          backdrop-filter: blur(14px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--soft-blue);
+          transition: all 0.5s ease;
+        }
+        .jn-book-btn:hover .jn-new-book {
+          border-color: var(--soft-blue);
+          box-shadow: 0 0 70px rgba(74, 139, 194, 0.5),
+            inset 0 0 40px rgba(42, 90, 156, 0.35);
+        }
+        .jn-new-plus {
+          font-family: 'Marcellus', serif;
+          font-size: 2.4rem;
+          text-shadow: 0 0 20px rgba(74, 139, 194, 0.9);
+        }
+
+        /* ---------- Topbar ---------- */
+        .jn-topbar {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 16px;
+          margin-bottom: 36px;
+          flex-wrap: wrap;
+        }
+        .jn-topbar-left {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+        .jn-notebook-name {
+          font-family: 'Marcellus', serif;
+          font-size: 1.2rem;
+          letter-spacing: 0.18em;
+          color: var(--white);
+          text-transform: uppercase;
+          text-shadow: 0 0 20px rgba(74, 139, 194, 0.5),
+            0 2px 12px rgba(0, 0, 0, 0.9);
+        }
+        .jn-topbar-controls {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+
+        /* ---------- Buttons ---------- */
+        .jn-btn-outline {
+          background: rgba(13, 27, 62, 0.5);
+          border: 1px solid rgba(160, 200, 240, 0.4);
+          color: var(--silver);
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-family: 'Marcellus', serif;
+          font-size: 0.7rem;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: all 0.4s ease;
+          backdrop-filter: blur(10px);
+        }
+        .jn-btn-outline:hover {
+          border-color: var(--soft-blue);
+          color: var(--white);
+          background: rgba(74, 139, 194, 0.1);
+        }
+        .jn-btn-blue,
+        .jn-btn-blue-active {
+          background: rgba(74, 139, 194, 0.2);
+          border: 1px solid var(--soft-blue);
+          color: var(--white);
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-family: 'Marcellus', serif;
+          font-size: 0.7rem;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: all 0.4s ease;
+          backdrop-filter: blur(10px);
+        }
+        .jn-btn-blue:hover {
+          background: rgba(74, 139, 194, 0.4);
+          box-shadow: 0 0 25px rgba(74, 139, 194, 0.5);
+        }
+        [dir='rtl'] .jn-btn-outline,
+        [dir='rtl'] .jn-btn-blue,
+        [dir='rtl'] .jn-btn-blue-active {
+          letter-spacing: 0;
+          text-transform: none;
+          font-family: 'Tajawal', sans-serif;
+          font-size: 0.9rem;
+        }
+
+        /* ---------- Closed book ---------- */
+        .jn-closed-book-wrap {
+          perspective: 2000px;
+          margin: 20px auto 0;
+          cursor: pointer;
+        }
+        .jn-closed-book {
+          position: relative;
+          width: min(400px, 78vw);
+          aspect-ratio: 3 / 4.3;
+          border-radius: 4px 10px 10px 4px;
+          box-shadow: 0 45px 100px rgba(0, 0, 0, 0.9),
+            0 0 120px rgba(74, 139, 194, 0.5),
+            0 0 200px rgba(42, 90, 156, 0.2),
+            inset -10px 0 30px rgba(0, 0, 0, 0.55),
+            inset 10px 0 20px rgba(255, 255, 255, 0.05);
+          animation: bookFloat 7s ease-in-out infinite;
+          overflow: hidden;
+        }
+        .jn-closed-book-inner {
+          position: absolute;
+          inset: 0;
+          padding: 55px 46px 50px 70px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .jn-closed-motif {
+          font-size: 2.4rem;
+          opacity: 0.9;
+        }
+        .jn-closed-title {
+          font-family: 'Marcellus', serif;
+          font-size: 1.5rem;
+          letter-spacing: 0.18em;
+          line-height: 1.5;
+          text-transform: uppercase;
+        }
+        .jn-closed-hint {
+          font-family: 'Cormorant Garamond', serif;
+          font-style: italic;
+          font-size: 0.8rem;
+          letter-spacing: 0.35em;
+          text-transform: uppercase;
+          opacity: 0.9;
+        }
+
+        /* ---------- Spread (open notebook) ---------- */
+        .jn-open-wrap {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-top: 20px;
+        }
+        .jn-spread {
+          position: relative;
+          width: min(1100px, 96vw);
+          aspect-ratio: 16 / 10;
+          border-radius: 14px;
+          padding: 26px;
+          display: flex;
+          gap: 4px;
+          box-shadow: 0 70px 160px rgba(0, 0, 0, 0.95),
+            0 0 180px rgba(74, 139, 194, 0.4),
+            inset 0 0 70px rgba(0, 0, 0, 0.45);
+        }
+        .jn-spine {
+          position: absolute;
+          top: 26px;
+          bottom: 26px;
+          left: 50%;
+          width: 24px;
+          transform: translateX(-50%);
+          background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.18) 40%,
+            rgba(0, 0, 0, 0.4) 60%,
+            rgba(0, 0, 0, 0.55)
+          );
+          z-index: 5;
+          pointer-events: none;
+        }
+        .jn-page {
+          position: relative;
+          flex: 1;
+          border-radius: 4px;
+          padding: 46px 52px 50px;
+          overflow-y: auto;
+          box-shadow: inset 0 0 70px rgba(120, 140, 170, 0.18),
+            inset -4px 0 12px rgba(0, 0, 0, 0.07),
+            inset 4px 0 12px rgba(0, 0, 0, 0.07);
+        }
+        .jn-page-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          margin-bottom: 24px;
+          padding-bottom: 14px;
+          border-bottom: 1px dashed rgba(120, 140, 170, 0.3);
+        }
+        .jn-page-date {
+          font-family: 'Marcellus', serif;
+          font-size: 0.68rem;
+          letter-spacing: 0.35em;
+          text-transform: uppercase;
+          opacity: 0.6;
+        }
+        .jn-mood-row {
+          display: flex;
+          gap: 8px;
+        }
+        .jn-mood-dot {
+          width: 13px;
+          height: 13px;
+          border-radius: 50%;
+          border: 1px solid rgba(0, 0, 0, 0.18);
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .jn-mood-dot.active {
+          transform: scale(1.2);
+        }
+        .jn-textarea {
+          width: 100%;
+          background: transparent;
+          border: none;
+          outline: none;
+          resize: none;
+          font-size: 1.2rem;
+          line-height: 1.95;
+          min-height: 340px;
+          display: block;
+          font-family: inherit;
+        }
+        .jn-textarea::placeholder {
+          opacity: 0.4;
+          font-style: italic;
+        }
+        .jn-page-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 20px;
+          padding-top: 14px;
+          border-top: 1px dashed rgba(120, 140, 170, 0.3);
+          font-family: 'Marcellus', serif;
+          font-size: 0.65rem;
+          letter-spacing: 0.28em;
+          text-transform: uppercase;
+          opacity: 0.55;
+        }
+        .jn-entries-title {
+          font-family: 'Marcellus', serif;
+          font-size: 0.95rem;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          margin-bottom: 16px;
+          opacity: 0.72;
+        }
+        .jn-empty {
+          text-align: center;
+          padding: 50px 20px;
+          font-family: 'Cormorant Garamond', serif;
+          font-style: italic;
+          opacity: 0.55;
+          font-size: 1.1rem;
+          line-height: 1.9;
+        }
+        .jn-entries-list {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        .jn-entry-card {
+          padding: 16px 18px;
+          border: 1px solid;
+          border-radius: 4px;
+          background: rgba(255, 255, 255, 0.3);
+          cursor: pointer;
+          transition: all 0.4s ease;
+        }
+        .jn-entry-card:hover {
+          background: rgba(255, 255, 255, 0.55);
+        }
+        .jn-entry-title {
+          font-size: 0.8rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          opacity: 0.88;
+          margin-bottom: 8px;
+        }
+        .jn-entry-preview {
+          font-size: 0.98rem;
+          line-height: 1.5;
+          opacity: 0.62;
+        }
+        .jn-entry-date {
+          font-family: 'Marcellus', serif;
+          font-size: 0.6rem;
+          letter-spacing: 0.25em;
+          text-transform: uppercase;
+          opacity: 0.48;
+          margin-top: 10px;
+        }
+        .jn-newpage-wrap {
+          display: flex;
+          justify-content: center;
+          gap: 12px;
+          margin-top: 32px;
+        }
+
+        /* ---------- Modal ---------- */
+        .jn-modal-backdrop {
+          position: fixed;
+          inset: 0;
+          z-index: 1000;
+          background: rgba(5, 5, 8, 0.92);
+          backdrop-filter: blur(18px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 24px;
+        }
+        .jn-modal {
+          background: linear-gradient(
+            160deg,
+            rgba(20, 30, 50, 0.98),
+            rgba(10, 15, 28, 0.98)
+          );
+          border: 1px solid rgba(160, 200, 240, 0.4);
+          border-radius: 18px;
+          padding: 46px 44px;
+          max-width: 640px;
+          width: 100%;
+          max-height: 90vh;
+          overflow-y: auto;
+          box-shadow: 0 60px 140px rgba(0, 0, 0, 0.95),
+            0 0 100px rgba(74, 139, 194, 0.35);
+        }
+        .jn-modal-title {
+          font-family: 'Marcellus', serif;
+          font-size: 1.5rem;
+          letter-spacing: 0.18em;
+          color: var(--white);
+          margin-bottom: 10px;
+          text-shadow: 0 0 20px rgba(74, 139, 194, 0.5);
+        }
+        .jn-modal-sub {
+          font-family: 'Cormorant Garamond', serif;
+          font-style: italic;
+          color: var(--silver);
+          margin-bottom: 32px;
+          font-size: 1.1rem;
+        }
+        .jn-modal-label {
+          display: block;
+          font-family: 'Marcellus', serif;
+          font-size: 0.65rem;
+          letter-spacing: 0.35em;
+          text-transform: uppercase;
+          color: var(--soft-blue);
+          margin-bottom: 12px;
+        }
+        .jn-modal-input {
+          width: 100%;
+          padding: 16px 20px;
+          background: rgba(13, 27, 62, 0.7);
+          border: 1px solid rgba(160, 200, 240, 0.3);
+          border-radius: 10px;
+          color: var(--white);
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 1rem;
+          outline: none;
+          margin-bottom: 32px;
+        }
+        .jn-theme-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+          gap: 14px;
+          margin-bottom: 36px;
+        }
+        .jn-theme-choice {
+          cursor: pointer;
+          border-radius: 10px;
+          padding: 14px 12px;
+          text-align: center;
+          border: 2px solid transparent;
+          background: rgba(13, 27, 62, 0.4);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          transition: all 0.4s ease;
+        }
+        .jn-theme-choice.selected {
+          border-color: var(--soft-blue);
+          background: rgba(74, 139, 194, 0.2);
+          box-shadow: 0 0 25px rgba(74, 139, 194, 0.5);
+        }
+        .jn-theme-swatch {
+          width: 46px;
+          height: 64px;
+          border-radius: 3px 7px 7px 3px;
+          box-shadow: inset -3px 0 6px rgba(0, 0, 0, 0.45),
+            0 5px 14px rgba(0, 0, 0, 0.55);
+        }
+        .jn-theme-name {
+          font-family: 'Marcellus', serif;
+          font-size: 0.6rem;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+          color: var(--silver);
+        }
+        .jn-theme-choice.selected .jn-theme-name {
+          color: var(--white);
+        }
+        .jn-modal-actions {
+          display: flex;
+          gap: 14px;
+          justify-content: flex-end;
+        }
+
+        /* ---------- Toast ---------- */
+        .jn-toast {
+          position: fixed;
+          bottom: 40px;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: 16px 32px;
+          background: rgba(13, 27, 62, 0.95);
+          border: 1px solid rgba(160, 200, 240, 0.4);
+          border-radius: 50px;
+          color: var(--white);
+          font-family: 'Marcellus', serif;
+          font-size: 0.75rem;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          backdrop-filter: blur(14px);
+          z-index: 2000;
+          box-shadow: 0 0 40px rgba(74, 139, 194, 0.4);
+          max-width: calc(100vw - 48px);
+          text-align: center;
+        }
+
+        /* =========================================================
+           MOBILE — TABLET (768px and below)
+           ========================================================= */
+        @media (max-width: 768px) {
+          .jn-content {
+            padding: 100px 12px 60px !important;
+            align-items: flex-start;
+          }
+          .jn-shelf-header {
+            margin-bottom: 36px !important;
+            padding: 0 8px;
+          }
+          .jn-shelf-label {
+            font-size: 0.6rem !important;
+            letter-spacing: 0.3em !important;
+            margin-bottom: 18px !important;
+          }
+          .jn-shelf-title {
+            font-size: 2.2rem !important;
+            margin-bottom: 16px !important;
+          }
+          .jn-shelf-subtitle {
+            font-size: 1rem !important;
+            padding: 0 12px;
+          }
+          .jn-shelf-grid {
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important;
+            gap: 28px 20px !important;
+          }
+          .jn-book-content {
+            padding: 26px 20px 22px 30px !important;
+          }
+          .jn-book-motif {
+            font-size: 1.5rem !important;
+          }
+          .jn-book-title {
+            font-size: 0.85rem !important;
+            letter-spacing: 0.1em !important;
+          }
+          .jn-book-meta {
+            font-size: 0.6rem !important;
+          }
+          .jn-new-plus {
+            font-size: 2rem !important;
+          }
+
+          /* Topbar */
+          .jn-topbar {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 14px !important;
+            margin-bottom: 24px !important;
+          }
+          .jn-topbar-left {
+            justify-content: space-between;
+          }
+          .jn-notebook-name {
+            font-size: 1.1rem !important;
+            letter-spacing: 0.12em !important;
+          }
+          .jn-topbar-controls {
+            justify-content: center;
+            width: 100%;
+          }
+          .jn-topbar-controls .jn-btn-outline,
+          .jn-topbar-controls .jn-btn-blue-active {
+            flex: 1 1 45%;
+            text-align: center;
+          }
+
+          /* Closed book */
+          .jn-closed-book {
+            width: 80vw !important;
+          }
+          .jn-closed-book-inner {
+            padding: 40px 32px 36px 44px !important;
+          }
+          .jn-closed-motif {
+            font-size: 2rem !important;
+          }
+          .jn-closed-title {
+            font-size: 1.2rem !important;
+          }
+          .jn-closed-hint {
+            font-size: 0.7rem !important;
+          }
+
+          /* ===================================================
+             SPREAD BECOMES FULL-SCREEN VERTICAL STACK
+             Each page fills the phone width, generously tall
+             =================================================== */
+          .jn-open-wrap {
+            margin-top: 8px !important;
+          }
+          .jn-spread {
+            flex-direction: column !important;
+            aspect-ratio: auto !important;
+            width: 100% !important;
+            padding: 14px !important;
+            border-radius: 14px !important;
+            gap: 16px !important;
+          }
+          .jn-spine {
+            display: none !important;
+          }
+          .jn-page {
+            padding: 28px 24px 26px !important;
+            min-height: 480px !important;
+            border-radius: 8px !important;
+          }
+          .jn-page-header {
+            margin-bottom: 18px !important;
+            padding-bottom: 12px !important;
+          }
+          .jn-page-date {
+            font-size: 0.6rem !important;
+            letter-spacing: 0.25em !important;
+          }
+          .jn-textarea {
+            min-height: 340px !important;
+            font-size: 1.15rem !important;
+            line-height: 1.9 !important;
+          }
+          .jn-page-footer {
+            font-size: 0.6rem !important;
+            letter-spacing: 0.2em !important;
+            margin-top: 16px !important;
+            padding-top: 12px !important;
+          }
+          .jn-entries-title {
+            font-size: 0.85rem !important;
+          }
+          .jn-empty {
+            padding: 36px 16px !important;
+            font-size: 1rem !important;
+          }
+          .jn-entry-card {
+            padding: 16px 18px !important;
+          }
+          .jn-entry-title {
+            font-size: 0.78rem !important;
+          }
+          .jn-entry-preview {
+            font-size: 0.95rem !important;
+          }
+          .jn-newpage-wrap {
+            margin-top: 22px !important;
+          }
+          .jn-newpage-wrap .jn-btn-outline {
+            width: 100%;
+            text-align: center;
+            padding: 14px 20px;
+          }
+
+          /* Modal */
+          .jn-modal {
+            padding: 32px 24px 26px !important;
+            border-radius: 14px !important;
+            max-height: 92vh !important;
+          }
+          .jn-modal-title {
+            font-size: 1.25rem !important;
+          }
+          .jn-modal-sub {
+            font-size: 1rem !important;
+            margin-bottom: 24px !important;
+          }
+          .jn-modal-input {
+            padding: 14px 16px !important;
+            font-size: 1rem !important;
+            margin-bottom: 24px !important;
+          }
+          .jn-theme-grid {
+            grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)) !important;
+            gap: 10px !important;
+            margin-bottom: 24px !important;
+          }
+          .jn-theme-choice {
+            padding: 10px 8px !important;
+            gap: 6px !important;
+          }
+          .jn-theme-swatch {
+            width: 36px !important;
+            height: 50px !important;
+          }
+          .jn-theme-name {
+            font-size: 0.55rem !important;
+            letter-spacing: 0.1em !important;
+          }
+          .jn-modal-actions {
+            flex-direction: column !important;
+            gap: 10px !important;
+          }
+          .jn-modal-actions .jn-btn-outline,
+          .jn-modal-actions .jn-btn-blue {
+            width: 100% !important;
+            text-align: center;
+            padding: 14px 20px;
+          }
+        }
+
+        /* =========================================================
+           MOBILE — SMALL PHONES (480px and below)
+           ========================================================= */
+        @media (max-width: 480px) {
+          .jn-shelf-title {
+            font-size: 1.8rem !important;
+          }
+          .jn-shelf-grid {
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+            gap: 20px 14px !important;
+          }
+          .jn-book-content {
+            padding: 22px 16px 18px 26px !important;
+          }
+          .jn-book-title {
+            font-size: 0.78rem !important;
+          }
+          .jn-closed-book-title {
+            font-size: 1rem !important;
+          }
+          .jn-page {
+            padding: 24px 20px 22px !important;
+            min-height: 420px !important;
+          }
+          .jn-textarea {
+            min-height: 300px !important;
+            font-size: 1.05rem !important;
+          }
+          .jn-modal {
+            padding: 26px 20px 22px !important;
+          }
+          .jn-modal-title {
+            font-size: 1.1rem !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
-
-/* =========================================================
-   STYLE HELPERS
-   ========================================================= */
-
-const pageStyle = (th: Theme): React.CSSProperties => ({
-  position: 'relative',
-  flex: 1,
-  background: th.pageBg,
-  borderRadius: 4,
-  padding: '46px 52px 50px',
-  color: th.pageInk,
-  fontFamily: th.font,
-  fontSize: '1.2rem',
-  lineHeight: 1.95,
-  boxShadow:
-    'inset 0 0 70px rgba(120,140,170,0.18), inset -4px 0 12px rgba(0,0,0,0.07), inset 4px 0 12px rgba(0,0,0,0.07)',
-  overflowY: 'auto',
-});
-
-const btnOutline = (isAr: boolean): React.CSSProperties => ({
-  background: 'rgba(13,27,62,0.5)',
-  border: '1px solid rgba(160,200,240,0.4)',
-  color: 'var(--silver)',
-  padding: '10px 20px',
-  borderRadius: 50,
-  fontFamily: "'Marcellus', serif",
-  fontSize: '0.7rem',
-  letterSpacing: isAr ? 0 : '0.2em',
-  textTransform: isAr ? 'none' : 'uppercase',
-  cursor: 'pointer',
-  transition: 'all 0.4s ease',
-  backdropFilter: 'blur(10px)',
-});
-
-const btnBlueActive = (isAr: boolean): React.CSSProperties => ({
-  background: 'rgba(74,139,194,0.2)',
-  border: '1px solid var(--soft-blue)',
-  color: 'var(--white)',
-  padding: '10px 20px',
-  borderRadius: 50,
-  fontFamily: "'Marcellus', serif",
-  fontSize: '0.7rem',
-  letterSpacing: isAr ? 0 : '0.2em',
-  textTransform: isAr ? 'none' : 'uppercase',
-  cursor: 'pointer',
-  boxShadow: '0 0 25px rgba(74,139,194,0.5)',
-  transition: 'all 0.4s ease',
-  backdropFilter: 'blur(10px)',
-});
-
-const btnBlue = (isAr: boolean): React.CSSProperties => ({
-  background: 'rgba(74,139,194,0.2)',
-  border: '1px solid var(--soft-blue)',
-  color: 'var(--white)',
-  padding: '14px 32px',
-  borderRadius: 50,
-  fontFamily: "'Marcellus', serif",
-  fontSize: '0.7rem',
-  letterSpacing: isAr ? 0 : '0.24em',
-  textTransform: isAr ? 'none' : 'uppercase',
-  cursor: 'pointer',
-  boxShadow: '0 0 30px rgba(74,139,194,0.4)',
-  transition: 'all 0.4s ease',
-});
-
-const modalLabel = (isAr: boolean): React.CSSProperties => ({
-  display: 'block',
-  fontFamily: "'Marcellus', serif",
-  fontSize: '0.65rem',
-  letterSpacing: isAr ? 0 : '0.35em',
-  textTransform: isAr ? 'none' : 'uppercase',
-  color: 'var(--soft-blue)',
-  marginBottom: 12,
-  textShadow: '0 0 15px rgba(74,139,194,0.5)',
-});
